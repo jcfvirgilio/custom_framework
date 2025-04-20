@@ -7,8 +7,10 @@
     "build": "esbuild src/main.js --bundle --minify --outdir=build --sourcemap",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "prepush": "bun run lint && bunx prettier --check .",
     "format": "prettier --write",
-    "prepare": "husky"
+    "prepare": "husky",
+    "postinstall": "husky install"
   },
   "lint-staged": {
     "**/*.js": [
