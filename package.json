@@ -1,0 +1,33 @@
+{
+  "name": "custom_framework",
+  "module": "src/main.js",
+  "type": "module",
+  "scripts": {
+    "dev": "bun run src/main.js",
+    "build": "esbuild src/main.js --bundle --minify --outdir=build --sourcemap",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "**/*.js": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "**/*.css": [
+      "prettier --write"
+    ]
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "esbuild": "^0.25.2",
+    "eslint": "^9.25.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.1",
+    "prettier": "^3.5.3"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}
