@@ -1,16 +1,20 @@
 {
   "name": "custom_framework",
+  "version": "0.1.0",
   "module": "src/main.js",
   "type": "module",
   "scripts": {
-    "dev": "bun run src/main.js",
-    "build": "esbuild src/main.js --bundle --minify --outdir=build --sourcemap",
+    "build": "esbuild src/main.js --bundle --minify --minify-whitespace --minify-identifiers --minify-syntax --outdir=dist",
+    "obfuscate": "javascript-obfuscator dist --output dist --compact true --self-defending true",
+    "dev": "esbuild src/main.js --bundle --outdir=dist --sourcemap --watch",
+    "build:prod": "bun run build && bun run obfuscate",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "prepush": "bun run lint && bunx prettier --check .",
     "format": "prettier --write",
     "prepare": "husky",
-    "postinstall": "husky install"
+    "postinstall": "husky install",
+    "start": "open index.html"
   },
   "lint-staged": {
     "**/*.js": [
@@ -26,6 +30,7 @@
     "esbuild": "^0.25.2",
     "eslint": "^9.25.0",
     "husky": "^9.1.7",
+    "javascript-obfuscator": "^4.1.1",
     "lint-staged": "^15.5.1",
     "prettier": "^3.5.3"
   },
