@@ -92,9 +92,9 @@ bunx serve
 /my-app
  ├── /src
  │    ├── /router
- │    ├── /views
  │    ├── /components
- │    ├── /layouts
+ │    ├── /core
+ │         ├── /API
  │    ├── /assets
  │         ├── /fonts
  │         └── /img
