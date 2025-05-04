@@ -1,12 +1,20 @@
 {
   "name": "custom_framework",
   "version": "0.1.0",
-  "module": "src/main.js",
+  "description": "Un micro-framework ultra-performance",
   "type": "module",
+  "main": "dist/main.js",
+  "module": "dist/main.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
+    "clean": "rm - rf dist",
+    "pack": "bun run scripts/pack.js",
     "build": "esbuild src/main.js --bundle --minify --minify-whitespace --minify-identifiers --minify-syntax --outdir=dist",
     "obfuscate": "javascript-obfuscator dist --output dist --compact true --self-defending true",
     "dev": "esbuild src/main.js --bundle --outdir=dist --sourcemap --watch",
+    "watch": "esbuild src/main.js --bundle --watch --sourcemap --outfile=dist/main.js",
     "build:prod": "bun run build && bun run obfuscate",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
@@ -36,5 +44,8 @@
   },
   "peerDependencies": {
     "typescript": "^5"
+  },
+  "dependencies": {
+    "tar": "^7.4.3"
   }
 }

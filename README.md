@@ -24,6 +24,7 @@ antes de empezar debes de ejecutar el build del core CustomFramework
 
 | Acción                        | Comando              |
 | ----------------------------- | -------------------- |
+| instalar dependencias         | `yarn install`       |
 | Build solo minificado         | `bun run build`      |
 | Build + Ofuscado (Producción) | `bun run build:prod` |
 
@@ -90,20 +91,33 @@ bunx serve
 
 ```bash
 /my-app
- ├── /src
- │    ├── /router
- │    ├── /components
- │    ├── /core
- │         ├── /API
- │    ├── /assets
- │         ├── /fonts
- │         └── /img
- │    ├── main.js
- │    └── main.css
- ├── /dist
- │    ├── main.js
- │    └── main.css
- ├── bun.lockb
- ├── package.json
- └── README.md
+src/
+├── assets/               # Recursos estáticos compartidos (fonts, imágenes base)
+│   ├── fonts/
+│   ├── images/
+│   └── styles/           # Estilos base/core (variables, reset, mixins)
+│
+├── core/                 # El core de framework
+│   ├── components/       # Componentes base (UI)
+│   │   ├── layout/       # Layout system
+│   │   ├── ui/           # Buttons, inputs, etc.
+│   │   └── index.js      # Exportación centralizada
+│   │
+│   ├── sdk/
+│   │   ├── dom.js            # Funciones base, SDK de utilidades DOM (GI, GN, etc.)
+│   │   ├── events.js         # Helpers para eventos
+│   │   ├── styles.js         # Manipulación de estilos
+│   │   ├── store/            # State management
+│   │   └── index.js          # Exportación unificada│
+├── router/               # Sistema de enrutamiento
+│   ├── guards/           # Middlewares de ruta
+│   ├── routes/           # Definiciones de rutas base
+│   └── Router.js         # Núcleo del router
+│
+├── /dist
+│    ├── main.js
+│    └── main.css
+├── bun.lockb
+├── package.json
+└── README.md
 ```
