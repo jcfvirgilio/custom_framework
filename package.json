@@ -11,7 +11,7 @@
   "scripts": {
     "clean": "rm - rf dist",
     "pack": "bun run scripts/pack.js",
-    "build": "esbuild src/main.js --bundle --minify --minify-whitespace --minify-identifiers --minify-syntax --outdir=dist",
+    "build": "esbuild src/main.js --bundle --minify --minify-whitespace --minify-identifiers --minify-syntax --format=esm  --outdir=dist",
     "obfuscate": "javascript-obfuscator dist --output dist --compact true --self-defending true",
     "dev": "esbuild src/main.js --bundle --outdir=dist --sourcemap --watch",
     "watch": "esbuild src/main.js --bundle --watch --sourcemap --outfile=dist/main.js",
@@ -46,6 +46,7 @@
     "typescript": "^5"
   },
   "dependencies": {
+    "dompurify": "^3.2.5",
     "tar": "^7.4.3"
   }
 }
