@@ -100,11 +100,15 @@ src/
 ├── core/                 # El core de framework
 │   ├── components/       # Componentes base (UI)
 │   │   ├── layout/       # Layout system
+│   │   │   ├── Layout.js    # Componente principal
+│   │   │   ├── Slot.js      # Subsistema de slots
+│   │   │   └── styles/      # Estilos base (opcionalmente CSS-in-JS)
 │   │   ├── ui/           # Buttons, inputs, etc.
 │   │   └── index.js      # Exportación centralizada
 │   │
 │   ├── sdk/
 │   │   ├── dom.js            # Funciones base, SDK de utilidades DOM (GI, GN, etc.)
+│   │   │   └── safeInjectHtml.js  # Utilidad para sanitizar e inyectar contenido HTML de manera segura en el DOM
 │   │   ├── events.js         # Helpers para eventos
 │   │   ├── styles.js         # Manipulación de estilos
 │   │   ├── store/            # State management
